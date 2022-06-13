@@ -1,26 +1,16 @@
 <?php
 
-namespace App;
+namespace App\Http\Controllers;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
-class Profile extends Model
+use App\Profile;
+
+class ProfileController extends Controller
 {
-    protected $guarded = array('id');
-
-    // 以下を追記
-    public static $rules = array(
-        'name' => 'required',
-        'gender' => 'required',
-        'hobby' => 'required',
-        'introduction' => 'required',
-    );
-
-    // 以下を追記
-    // News Modelに関連付けを行う
-    public function histories()
+    public function index()
     {
-        return $this->hasMany('App\History');
-
+        $profile = Profile::first();
+        return view('profile.index', ['profile' => $profile]);
     }
 }
