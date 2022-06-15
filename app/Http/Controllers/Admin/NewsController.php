@@ -52,6 +52,7 @@ class NewsController extends Controller
       } else {
           $posts = News::all();
       }    
+      $cond_title = 'test';
       return view('admin.news.index', ['posts' => $posts, 'cond_title' => $cond_title]);
   }
   
